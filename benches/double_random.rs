@@ -4,10 +4,10 @@ fn criterion_benchmark(c: &mut Criterion) {
     let mut rng = rand::thread_rng();
 
     c.bench_function("thread_rng double_random_unsafe", |b| {
-        b.iter(|| play_transmute::generate_double_random_unsafe(&mut rng))
+        b.iter(|| play_doublerandom::generate_double_random_unsafe(&mut rng))
     });
     c.bench_function("thread_rng double_random_safe", |b| {
-        b.iter(|| play_transmute::generate_double_random_safe(&mut rng))
+        b.iter(|| play_doublerandom::generate_double_random_safe(&mut rng))
     });
 
     // 32 byte seed
@@ -22,10 +22,10 @@ fn criterion_benchmark(c: &mut Criterion) {
     let mut chacha20rng = rand_chacha::ChaCha20Rng::from_seed(seed);
 
     c.bench_function("chacha20 double_random_unsafe", |b| {
-        b.iter(|| play_transmute::generate_double_random_unsafe(&mut chacha20rng))
+        b.iter(|| play_doublerandom::generate_double_random_unsafe(&mut chacha20rng))
     });
     c.bench_function("chacha20 double_random_safe", |b| {
-        b.iter(|| play_transmute::generate_double_random_safe(&mut chacha20rng))
+        b.iter(|| play_doublerandom::generate_double_random_safe(&mut chacha20rng))
     });
 
 }
